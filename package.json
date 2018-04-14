@@ -19,7 +19,7 @@
   "homepage": "https://github.com/MartyFromCary/Mongo-NYT-Scrape#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "cherio": "^1.0.0-rc.2",
+    "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "mongoose": "^5.0.14",
