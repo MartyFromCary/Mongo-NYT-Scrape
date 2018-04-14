@@ -1,7 +1,43 @@
+const request = require("request");
+const cheerio = require("cheerio");
 const Article = require("../models/article");
 const Note = require("../models/note");
 
 module.exports = app => {
+  
+  app.get("/scrape", (req, res) => {
+    Article.find({}).then(articles => {
+      const storyUrls = articles.map(article => article.storyUrl);
+
+      request("https://www.nytimes.com/section/us", (error, response, html) => {
+        const $ = cheerio.load(html);
+
+        let count = 0;
+        $("article.story").each((i, element) => {
+          const storyUrl = $(element)
+            .find(".story-body>.story-link")
+            .attr("href");
+
+          if (!storyUrl || storyUrls.includes(storyUrl)) {
+            return;
+          }
+          
+          Article.create({
+            storyUrl,
+            headline: $(element).find("h2.headline").text().trim(),
+            summary:  $(element).find("p.summary").text().trim(),
+            imgUrl:   $(element).find("img").attr("src"),
+            byLine:   $(element).find("p.byline").text().trim()
+          }).then(article => {
+            /*count++;*/
+          });
+          count++;
+        });
+        res.json({ count });
+      });
+    });
+  });
+
   app.get("/notsaved", (req, res) => {
     Article.find({ saved: false })
       .then(articles => res.json(articles))

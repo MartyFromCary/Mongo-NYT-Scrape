@@ -98,7 +98,7 @@ $(document).ready(function() {
     $.getJSON("/saved", articles =>
       articles.forEach(({ _id, storyUrl, headline, imgUrl, summary, byLine }) =>
         root.append(`
-              <div class="panel panel-success zoom">
+              <div class="panel panel-success">
                 <div class="panel-heading">
                   <a href="${storyUrl}" target="_blank"><h2>${headline}</h2></a>
                 </div>

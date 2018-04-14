@@ -11,7 +11,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 require("./routes/htmlRoutes")(app);
 require("./routes/apiRoutes")(app);
-require("./routes/scrape")(app);
 
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraperdb";
