@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Mongo NYT Scraper</title>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+    <div class="jumbotron text-center">
+        <h1>NYT Saved Articles</h1>
+        <p>
+            <a class="btn btn-primary btn-lg" href="/" role="button">Home</a>
+        </p>
+    </div>
+
+    <div class="container" id="root">
+    </div>
+
+    <div id="noteRoot" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title text-center">Add a note</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="noteTitle" class="noteInput" placeholder="Enter Title">
+                    <input type="text" id="noteBody" class="noteInput" placeholder="Enter Body">
+                    <div id="noteArea"></div>
+                </div>
+                <div class="modal-footer">
+                    <h5>Click the note to read it, or X to delete</h5>
+                    <button type="button" id="noteSubmit">Save Note</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="assets/js/saved.js"></script>
+
+
+</body>
+
+</html>

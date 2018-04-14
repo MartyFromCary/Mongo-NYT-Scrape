@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Mongo NYT Scraper</title>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+    <div class="jumbotron text-center">
+        <h1>NYT Web Scraper</h1>
+        <p>
+            <a class="btn btn-primary btn-lg" id="scrape" data-toggle="modal" data-target="#alertModal" role="button">Scrape New Articles</a>
+        </p>
+        <p>
+            <a class="btn btn-primary btn-lg" href="/viewSaved" role="button">Saved Articles</a>
+        </p>
+    </div>
+
+    <div class="container" id="root">
+    </div>
+
+    <div id="alertModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body text-center">
+                    <h2>You have scraped
+                        <span id="numArticles"></span> new articles</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="assets/js/index.js"></script>
+
+</body>
+
+</html>
