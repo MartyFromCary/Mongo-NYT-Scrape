@@ -6,3 +6,5 @@ Articles are store into MongoDB
 
 Heroku deployment: 
 https://agile-beyond-40320.herokuapp.com
+
+Added handlebars
