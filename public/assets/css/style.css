@@ -1,5 +1,6 @@
 body {
-    background-color: tan;
+    /*background-color: tan;*/
+    background-image: url("/assets/img/newspapers.jpg");
 }
 
 .noteInput {

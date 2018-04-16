@@ -1,0 +1,49 @@
+<div class="jumbotron text-center">
+    <h1>NYT Saved Articles</h1>
+    <p>
+        <a class="btn btn-primary btn-lg" href="/" role="button">Home</a>
+    </p>
+</div>
+
+<div class="container">
+    {{#each articles}}
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <a href="{{storyUrl}}" target="_blank">
+                <h2>{{headline}}</h2>
+            </a>
+        </div>
+        <div class="panel-body">
+            <div class="pull-right">
+                <img src="{{imgUrl}}" alt="" height="150">
+            </div>
+            <h2>{{summary}}</h2>
+        </div>
+        <div class="panel-footer">{{byLine}}</div>
+        <button class="addNote" data-id="{{_id}}">Add Note</button>
+        <button class="deleteArticle" data-id="{{_id}}">Delete Article</button>
+    </div>
+    {{/each}}
+</div>
+
+<div id="noteRoot" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-center">Add a note</h4>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="noteTitle" class="noteInput" placeholder="Enter Title">
+                <input type="text" id="noteBody" class="noteInput" placeholder="Enter Body">
+                <div id="noteArea"></div>
+            </div>
+            <div class="modal-footer">
+                <h5>Click the note to read it, or X to delete</h5>
+                <button type="button" id="noteSubmit">Save Note</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/assets/js/saved.js"></script>

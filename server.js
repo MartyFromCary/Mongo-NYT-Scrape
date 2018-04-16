@@ -1,4 +1,5 @@
 const express = require("express");
+const exphbs = require("express-handlebars");
 const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -8,6 +9,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, "public")));
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 require("./routes/htmlRoutes")(app);
 require("./routes/apiRoutes")(app);

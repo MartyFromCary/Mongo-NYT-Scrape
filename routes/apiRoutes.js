@@ -4,7 +4,6 @@ const Article = require("../models/article");
 const Note = require("../models/note");
 
 module.exports = app => {
-  
   app.get("/scrape", (req, res) => {
     Article.find({}).then(articles => {
       const storyUrls = articles.map(article => article.storyUrl);
@@ -21,13 +20,24 @@ module.exports = app => {
           if (!storyUrl || storyUrls.includes(storyUrl)) {
             return;
           }
-          
+
           Article.create({
             storyUrl,
-            headline: $(element).find("h2.headline").text().trim(),
-            summary:  $(element).find("p.summary").text().trim(),
-            imgUrl:   $(element).find("img").attr("src"),
-            byLine:   $(element).find("p.byline").text().trim()
+            headline: $(element)
+              .find("h2.headline")
+              .text()
+              .trim(),
+            summary: $(element)
+              .find("p.summary")
+              .text()
+              .trim(),
+            imgUrl: $(element)
+              .find("img")
+              .attr("src"),
+            byLine: $(element)
+              .find("p.byline")
+              .text()
+              .trim()
           }).then(article => {
             /*count++;*/
           });
@@ -36,18 +46,6 @@ module.exports = app => {
         res.json({ count });
       });
     });
-  });
-
-  app.get("/notsaved", (req, res) => {
-    Article.find({ saved: false })
-      .then(articles => res.json(articles))
-      .catch(err => res.json(err));
-  });
-
-  app.get("/saved", (req, res) => {
-    Article.find({ saved: true })
-      .then(articles => res.json(articles))
-      .catch(err => res.json(err));
   });
 
   app.post("/saveArticle", (req, res) =>

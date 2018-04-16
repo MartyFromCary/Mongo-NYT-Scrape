@@ -1,0 +1,45 @@
+<div class="jumbotron text-center">
+    <h1>NYT Web Scraper</h1>
+    <p>
+        <a class="btn btn-primary btn-lg" id="scrape" data-toggle="modal" data-target="#alertModal" role="button">Scrape New Articles</a>
+    </p>
+    <p>
+        <a class="btn btn-primary btn-lg" href="/viewSaved" role="button">Saved Articles</a>
+    </p>
+</div>
+
+<div class="container">
+    {{#each articles}}
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <a href="{{storyUrl}}" target="_blank">
+                <h2>{{headline}}</h2>
+            </a>
+        </div>
+        <div class="panel-body">
+            <div class="pull-right">
+                <img src="{{imgUrl}}" alt="" height="150">
+            </div>
+            <h2>{{summary}}</h2>
+        </div>
+        <div class="panel-footer">{{byLine}}</div>
+        <button id="saveArticle" data-id="{{_id}}">Save</button>
+    </div>
+    {{/each}}
+</div>
+
+<div id="alertModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body text-center">
+                <h2>You have scraped
+                    <span id="numArticles"></span> new articles</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/assets/js/index.js"></script>
